@@ -11,6 +11,7 @@
 # instance found in the 2026-09 audit turned out to be.
 
 acceptance_count
+act_batch
 action_violates
 agenda_dependency
 appeal_denial_count
@@ -19,6 +20,9 @@ applied_rule
 armory_run
 armory_tool
 attack_vector
+browser_control_attribute
+browser_log
+browser_observed_at
 campaign_active
 campaign_prompt_policy
 chaos_safety_violation
@@ -29,7 +33,10 @@ coverage_goal
 coverage_metric
 derived_rule
 detected_security_flow
+dialog_policy
 element_action
+element_enabled
+element_hydration
 failure_count_by_file
 false_positive_pattern
 file_line_count
@@ -39,9 +46,15 @@ intelligence_preference
 invariant_value
 investigation_result
 item_retry_count
+js_dialog
 known_cause
 nemesis_attack_run
 nesting_depth
+net_http_error
+net_loading_failed
+page_framework
+page_hydrated
+page_load_failed
 pass_count
 patch_tested
 proposed_rule
@@ -55,6 +68,7 @@ rule_outcome
 security_anomaly
 shard_family
 specialist_knowledge_updated
+storage_entry
 style_violation
 symptom
 system_invariant
@@ -69,3 +83,4 @@ tester_task
 thunderdome_battle
 tool_language
 unhandled_case_count_computed
+ws_event

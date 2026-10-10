@@ -44,6 +44,8 @@ the configured `build.go_flags` (`AppendGoFlags`). Its callers:
   is why the inventory test never saw them spawning `go` with the process
   environment.
 - `internal/tools/codedom/run_impacted_tests.go` — `runGoTests`.
+- `internal/tools/build_exclusion.go` — `build.TestTagsForWorkspace`, the test
+  tags the proof build of a `//go:build ignore` header lands with.
 - `internal/gates/run.go` — `gates.Run`, a workspace's own gates as recurse
   and the session's `/test_run` round run them: a gate whose program is `go`
   goes through `GoInvocation`; any other program gets an allowlisted
