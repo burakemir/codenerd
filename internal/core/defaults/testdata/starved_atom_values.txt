@@ -11,6 +11,11 @@ atom_tag	/dream_only
 coder_state	/build_passed
 coder_state	/context_ready
 coder_state	/edit_applied
+config_param	/browser_attended_navigation_window_ms
+config_param	/browser_causal_bucket_ms
+config_param	/browser_priority_primary
+config_param	/browser_slow_api_ms
+config_param	/browser_unhydrated_age_ms
 detected_modal	/polite_request
 doc_tag	/experimental
 edit_analysis	/does_io
@@ -31,6 +36,7 @@ invariant_value	/p99_latency_ms
 pytest_failure	/assertion
 pytest_failure	/fixture
 raw_finding	/maintainability
+step_file_net	/unchanged
 system_invariant	/goroutine_limit
 system_invariant	/http_500_rate
 system_invariant	/latency_limit_ms

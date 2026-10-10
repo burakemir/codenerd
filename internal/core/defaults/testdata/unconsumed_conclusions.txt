@@ -9,7 +9,10 @@
 # while the kernel's answer goes unread, or a rule nobody needs.
 
 unconsumed above
+unconsumed act_effect
+unconsumed act_http_effect
 unconsumed action_blocked
+unconsumed action_candidate
 unconsumed action_complete_verified
 unconsumed action_enhanced_validated
 unconsumed action_failed_validation
@@ -41,8 +44,11 @@ unconsumed apply_convention
 unconsumed architecture_violation
 unconsumed armory_tool_stale
 unconsumed assertion_fix_needed
+unconsumed asset_http_error
 unconsumed async_review_needed
 unconsumed audit_hazard
+unconsumed auth_expired
+unconsumed auth_failed_request
 unconsumed auto_apply_rule
 unconsumed battle_hardened
 unconsumed best_candidate_priority
@@ -52,6 +58,17 @@ unconsumed block_all_actions
 unconsumed block_refactor
 unconsumed blocked_learned_action_count
 unconsumed breaking_change_risk
+unconsumed browser_clock_sample
+unconsumed browser_console_cause
+unconsumed browser_dead_ref
+unconsumed browser_dialog_accept
+unconsumed browser_dialog_dismiss
+unconsumed browser_disabled_ref
+unconsumed browser_has_attended
+unconsumed browser_has_loading_failure
+unconsumed browser_has_request
+unconsumed browser_last_attended
+unconsumed browser_session_clock
 unconsumed build_command
 unconsumed build_healthy
 unconsumed campaign_block_reason
@@ -84,6 +101,9 @@ unconsumed candidate_mode
 unconsumed capability_addresses_need
 unconsumed capability_available
 unconsumed capability_is_linked
+unconsumed caused_by
+unconsumed caused_by_candidate
+unconsumed caused_by_nearest
 unconsumed checks_passed
 unconsumed circular_dependency
 unconsumed co_commit_count
@@ -119,6 +139,7 @@ unconsumed compound_suggestion
 unconsumed compress_priority
 unconsumed concurrency_pattern
 unconsumed connector_type
+unconsumed console_error_bucket
 unconsumed constraint_violation
 unconsumed context_priority
 unconsumed coverage_below_goal
@@ -132,12 +153,14 @@ unconsumed current_ooda_phase
 unconsumed database_operation_pattern
 unconsumed db_needs_pooling
 unconsumed db_needs_transaction
+unconsumed dead_control
 unconsumed debug_why_blocked
 unconsumed decomposition_warning
 unconsumed deep_nesting
 unconsumed dependency_link_exists
 unconsumed derived_mode
 unconsumed diagnostic_active
+unconsumed dialog_answer
 unconsumed dir_has_go_test
 unconsumed dream_block
 unconsumed edit_contains_operation
@@ -167,6 +190,7 @@ unconsumed failed_campaign_task
 unconsumed failed_edit
 unconsumed failed_request
 unconsumed failed_request_at
+unconsumed failed_request_done
 unconsumed file_dependency
 unconsumed file_has_security_sensitive
 unconsumed file_in_project
@@ -176,6 +200,7 @@ unconsumed final_atom
 unconsumed final_context_include
 unconsumed final_shard_for_task
 unconsumed focus_needs_resolution
+unconsumed foreign_control
 unconsumed fragile
 unconsumed function_in_scope
 unconsumed function_too_long
@@ -335,6 +360,11 @@ unconsumed learning_signal
 unconsumed left_of
 unconsumed long_file_warning
 unconsumed long_term_capability
+unconsumed mcp_remote_confirmation_satisfied
+unconsumed mcp_remote_metadata_conflict
+unconsumed mcp_remote_permitted
+unconsumed mcp_remote_server_conflict
+unconsumed mcp_remote_subject_current
 unconsumed mcp_server_facet_available
 unconsumed mcp_shard_type
 unconsumed mcp_tool_available
@@ -372,6 +402,7 @@ unconsumed needs_test_generation
 unconsumed needs_verification
 unconsumed nemesis_victory
 unconsumed nesting_warning
+unconsumed network_failure
 unconsumed next_agenda_item
 unconsumed next_coder_action
 unconsumed next_pytest_repair
@@ -440,6 +471,7 @@ unconsumed remediation_task_exists
 unconsumed remediation_task_needed
 unconsumed repeated_violation_pattern
 unconsumed replan_needed
+unconsumed request_failure_bucket
 unconsumed require_tests
 unconsumed requires_campaign
 unconsumed requires_contract_check
@@ -556,8 +588,10 @@ unconsumed turn_tests_green
 unconsumed turn_tests_red
 unconsumed turn_vet_green
 unconsumed unaddressed_high_risk
+unconsumed unattended_navigation
 unconsumed unchecked_error
 unconsumed unhandled_case_count
+unconsumed unhydrated_page
 unconsumed unresolved_failure
 unconsumed unsafe_deref
 unconsumed unserved_persona
