@@ -733,13 +733,13 @@ func (o *Orchestrator) runEdgeRiskGate(ctx context.Context, targetPaths []string
 	if err != nil {
 		reason := fmt.Sprintf("edge analysis failed: %v", err)
 		return RiskGateResult{
-				Name:    RiskGateEdge,
-				Enabled: true,
-				Outcome: RiskGateOutcomeBlocked,
-				Reason:  reason,
-			}, []riskConcern{{
-				gate: RiskGateEdge, severity: riskConcernUnapproved, detail: reason,
-			}}
+			Name:    RiskGateEdge,
+			Enabled: true,
+			Outcome: RiskGateOutcomeBlocked,
+			Reason:  reason,
+		}, []riskConcern{{
+			gate: RiskGateEdge, severity: riskConcernUnapproved, detail: reason,
+		}}
 	}
 	if analysis == nil {
 		return RiskGateResult{
@@ -820,13 +820,13 @@ func (o *Orchestrator) runAdvisoryRiskGate(ctx context.Context, targetPaths []st
 	if err != nil {
 		reason := fmt.Sprintf("advisory consultation failed: %v", err)
 		return RiskGateResult{
-				Name:    RiskGateAdvisory,
-				Enabled: true,
-				Outcome: RiskGateOutcomeBlocked,
-				Reason:  reason,
-			}, []riskConcern{{
-				gate: RiskGateAdvisory, severity: riskConcernUnapproved, detail: reason,
-			}}
+			Name:    RiskGateAdvisory,
+			Enabled: true,
+			Outcome: RiskGateOutcomeBlocked,
+			Reason:  reason,
+		}, []riskConcern{{
+			gate: RiskGateAdvisory, severity: riskConcernUnapproved, detail: reason,
+		}}
 	}
 
 	synthesis := o.advisoryBoard.SynthesizeVotes(responses)
