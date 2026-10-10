@@ -247,3 +247,26 @@ zz*_test.go
 # its cwd at the repo root and an unexpanded ${CLAUDE_PLUGIN_ROOT}, so it keeps its
 # SQLite state in a directory literally named that. It is the plugin's, not codeNERD's.
 /${CLAUDE_PLUGIN_ROOT}/
+
+# Root-level session debris. Coverage runs, scans, and one-off generation/fix
+# scripts landed at the repo root through repeated `git add -A` after agent
+# sessions and were never reviewed. Anchored to the root so real files with
+# these shapes inside packages stay trackable.
+/cov*.out
+/cov*.txt
+/cover*
+/coverage*
+/scan*.txt
+/scan.json
+/scan_out.txt
+/func_cov.txt
+/core_qa.txt
+/mw_cov.out
+/prompt_evolution*
+/trace
+/build_output*.txt
+/commit_message.txt
+/pr_description.txt
+/perception_output.txt
+/go.mod_patch
+/init
