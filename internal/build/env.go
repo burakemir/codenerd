@@ -19,6 +19,7 @@
 //	                       recurse_workspace.go (go list for the recurse DAG, via GoInvocation)
 //	internal/gates       — run.go (a workspace's go gates, via GoInvocation; WorkspaceUserConfig)
 //	internal/tools/shell — verification.go (run_build / run_tests, via GoInvocation)
+//	internal/tools       — build_exclusion.go (TestTagsForWorkspace for the guard's proof build)
 //	internal/tools/codedom — run_impacted_tests.go (via GoInvocation)
 //
 // The historical list in this comment named preflight, attack_runner and tester,

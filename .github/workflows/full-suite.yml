@@ -1,0 +1,68 @@
+name: full-suite
+
+# The gap this workflow fills: ci.yml builds, vets, and runs the custom audit
+# tools plus three SCOPED test jobs (session/tools/prompt with -count=2,
+# mcp+store with -race, embedding/mangle/retrieval with simd), but no job
+# anywhere runs `go test ./...`. A package can fail its entire test file while
+# every CI job stays green -- which is exactly what main carried before this
+# branch: internal/core/defaults (three drifted baselines), internal/build
+# (undocumented importer), and internal/browser (a policy corpus that failed
+# schema analysis) were all red while CI reported success.
+#
+# macOS is deliberately absent. About ten packages fail there on test-fixture
+# assumptions that hold on Linux and Windows but not on macOS: /var resolving
+# to /private/var (TestParsePanic, TestRunPytest_*, TestResolveForUpload*),
+# and stdin-idle deadline timing. A macOS job here would be permanently red
+# while measuring the platform, not the code.
+#
+# Like ci.yml, every build uses the sqlite_vec tag: without it the binary
+# silently degrades from ANN to lexical search (see AGENTS.md, "Build With
+# sqlite-vec Support").
+
+on:
+  # Not every branch push: the suite runs 17-24 minutes per OS and main
+  # currently carries genuinely failing tests, so push-triggering every
+  # feature branch would spam red runs that measure known upstream debt.
+  # Pull requests, the nightly schedule, and manual runs keep the signal.
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+# A branch's older full-suite runs are superseded by its newest push; there is
+# no reason to queue 90-minute jobs for commits nobody will read the result of.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Vendored in-repo; required for the sqlite_vec build tag to compile.
+  CGO_CFLAGS: -I${{ github.workspace }}/sqlite_headers
+
+jobs:
+  full-test:
+    name: build + vet + test ./... (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+      - name: Build
+        run: go build -tags sqlite_vec ./...
+      - name: Vet
+        run: go vet -tags sqlite_vec ./...
+      - name: Full test suite
+        # -timeout is not optional: on 2-core CI runners internal/core,
+        # internal/session and internal/campaign each exceed go test's
+        # default 10-minute per-package budget and die with
+        # "panic: test timed out" -- a runner-speed artifact, not a failure.
+        run: go test -tags sqlite_vec -timeout 40m ./...
