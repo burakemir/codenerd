@@ -20,8 +20,15 @@ name: full-suite
 # sqlite-vec Support").
 
 on:
+  # Not every branch push: the suite runs 17-24 minutes per OS and main
+  # currently carries genuinely failing tests, so push-triggering every
+  # feature branch would spam red runs that measure known upstream debt.
+  # Pull requests, the nightly schedule, and manual runs keep the signal.
   push:
+    branches: [main]
   pull_request:
+  schedule:
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 # A branch's older full-suite runs are superseded by its newest push; there is
@@ -54,4 +61,8 @@ jobs:
       - name: Vet
         run: go vet -tags sqlite_vec ./...
       - name: Full test suite
-        run: go test -tags sqlite_vec ./...
+        # -timeout is not optional: on 2-core CI runners internal/core,
+        # internal/session and internal/campaign each exceed go test's
+        # default 10-minute per-package budget and die with
+        # "panic: test timed out" -- a runner-speed artifact, not a failure.
+        run: go test -tags sqlite_vec -timeout 40m ./...
