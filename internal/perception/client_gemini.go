@@ -79,9 +79,9 @@ var (
 	_ interface{ GetThinkingLevel() string }          = (*GeminiClient)(nil) // ThinkingProvider
 	_ interface{ GetLastThoughtSignature() string }   = (*GeminiClient)(nil) // ThoughtSignatureProvider
 	_ interface{ GetLastGroundingSources() []string } = (*GeminiClient)(nil) // GroundingProvider
-	_ interface{ IsWebSearchEnabled() bool }       = (*GeminiClient)(nil) // GroundingProvider
+	_ interface{ IsWebSearchEnabled() bool }          = (*GeminiClient)(nil) // GroundingProvider
 	_ interface{ IsURLContextEnabled() bool }         = (*GeminiClient)(nil) // GroundingProvider
-	_ interface{ SetEnableWebSearch(bool) }        = (*GeminiClient)(nil) // GroundingController
+	_ interface{ SetEnableWebSearch(bool) }           = (*GeminiClient)(nil) // GroundingController
 	_ interface{ SetEnableURLContext(bool) }          = (*GeminiClient)(nil) // GroundingController
 	_ interface{ SetURLContextURLs([]string) }        = (*GeminiClient)(nil) // GroundingController
 	_ interface{ ShouldUsePiggybackTools() bool }     = (*GeminiClient)(nil) // PiggybackToolProvider
